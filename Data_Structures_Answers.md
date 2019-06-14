@@ -27,4 +27,8 @@ O(1)
 
 7. What is the runtime complexity of your optimized code in `names.py`?
 
+O(1) in the solution that uses sets that utilize hash tables
+
 8. What is the space complexity of your optimized code in `names.py`?
+
+O(n) in the solution that uses sets that utilize hash tables

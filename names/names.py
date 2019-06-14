@@ -27,18 +27,29 @@ f.close()
 #     if name in names_2:
 #         duplicates.append(name)
 
-# Optimized Solution runtime: 88.04000115394592 seconds, 0.1049964427947998 seconds to make the tree.
-bst_2 = BinarySearchTree(names_2[0]) 
-for i in range(1,len(names_2)):
-    bst_2.insert(names_2[i])
-end_time_1 = time.time()
-print (f'{time.time() - start_time} seconds to make the tree.')
+# "Optimized" Solution 1: runtime: 88.04000115394592 seconds, 0.1049964427947998 seconds to make the tree.
+# bst_2 = BinarySearchTree(names_2[0]) 
+# for i in range(1,len(names_2)):
+#     bst_2.insert(names_2[i])
+# end_time_1 = time.time()
+# print (f'{time.time() - start_time} seconds to make the tree.')
+# duplicates = []
+# for name in names_1:
+#     if bst_2.contains(name):
+#         duplicates.append(name)
+
+# Optimized solution 2: runtime: 0.012006998062133789 seconds
 duplicates = []
-for name in names_1:
-    if bst_2.contains(name):
-        duplicates.append(name)
+name_1_set = set(names_1)
+name_2_set = set(names_2)
+for name in name_1_set.intersection(name_2_set):
+    duplicates.append(name)
 
 end_time = time.time()
+duration = end_time - start_time
+time_provided = 15.133995771408081
+multiple = round(time_provided/duration,1)
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
-print (f"runtime: {end_time - end_time_1} seconds")
-
+print (f"runtime: {duration} seconds")
+print(f'Optimized solution runs {multiple} times faster than the provided solution ')
+print()
